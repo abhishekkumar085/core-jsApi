@@ -37,6 +37,7 @@ hr {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 80px;
+    margin-bottom: 70px; 
 }
 
 footer {
@@ -47,6 +48,7 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
+    z-index: 1000;
 }
 
 #copyright {
