@@ -1,0 +1,303 @@
+ <!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CoreJS to fetch and Show Api in html Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      img {
+        height: 150px;
+        width: 200px;
+        border: 1px solid black;
+        box-shadow: 5px 8px 10px #5a4343;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      p {
+        margin: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 2px 4px 8px #5a4343;
+      }
+      h4 {
+        text-align: center;
+        color: purple;
+        padding: 10px;
+      }
+      hr {
+        margin: 5px;
+        border: 1px solid #ccc;
+      }
+      #data-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+       
+      }
+      footer {
+        height: 50px;
+        background: #000;
+        padding-top: 4px;
+      }
+      #copyright {
+        color: #fff;
+        text-align: center;
+        border: none;
+        box-shadow: none;
+      }
+         #loading-message {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #333;
+      }
+      header {
+        height: 60px;
+        width: 100%;
+        background: #522e2e;
+        padding-top: 15px;
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2 style="color: rgb(78, 238, 184); text-align: center">
+        Fetching Api Data (Using Core javascript)
+      </h2>
+    </header>
+    <div id="loading-message">Loading...</div>
+    <div id="data-container"></div>
+    <footer>
+      <p id="copyright">Copyright &copy;2024 Learning.All Rights Reserved</p>
+    </footer>
+
+    <script>
+      const apiUrl = "https://dummyjson.com/products";
+      const loadingMessage=document.getElementById("loading-message")
+      fetch(apiUrl)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Data Received:", data);
+          loadingMessage.style.display = "none"; 
+          displayData(data.products); // Access the 'products' property
+        })
+        .catch((err) => {
+          console.log("Error:", err);
+        });
+
+      function displayData(products) {
+        const div = document.getElementById("data-container");
+        
+
+        products.forEach((product) => {
+          const productDiv = document.createElement("div");
+
+          const h4 = document.createElement("h4");
+          h4.textContent = `Title - ${product.title}`;
+          productDiv.appendChild(h4);
+
+          const para = document.createElement("p");
+          para.textContent = `Brand - ${product.brand}`;
+          productDiv.appendChild(para);
+
+          const para2 = document.createElement("p");
+          para2.textContent = `Category - ${product.category}`;
+          productDiv.appendChild(para2);
+
+          const para3 = document.createElement("p");
+          para3.textContent = `Description - ${product.description}`;
+          productDiv.appendChild(para3);
+
+          const para4 = document.createElement("p");
+          para4.textContent = `Discount Percentage - ${product.discountPercentage} %`;
+          productDiv.appendChild(para4);
+
+          const para5 = document.createElement("p");
+          para5.textContent = `Price - ${product.price}`;
+          productDiv.appendChild(para5);
+
+          const para6 = document.createElement("p");
+          para6.textContent = `Rating - ${product.rating}`;
+          productDiv.appendChild(para6);
+
+          product.images.forEach((imageUrl, index) => {
+            const img = document.createElement("img");
+            img.src = imageUrl;
+            img.alt = `Image ${index + 1}`;
+            productDiv.appendChild(img);
+          });
+
+          const hr = document.createElement("hr");
+          productDiv.appendChild(hr);
+
+          div.appendChild(productDiv);
+        });
+      }
+    </script>
+  </body>
+</html> 
+
+
+
+
+
+
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>CoreJS to fetch and Show Api in html Page</title>
+     <style>
+       * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+       }
+       img {
+         height: 150px;
+         width: 200px;
+         border: 1px solid black;
+         box-shadow: 5px 8px 10px #5a4343;
+         margin: 10px;
+         border-radius: 5px;
+       }
+       p {
+         margin: 5px;
+         padding: 10px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         box-shadow: 2px 4px 8px #5a4343;
+       }
+       h4 {
+         text-align: center;
+         color: purple;
+         padding: 10px;
+       }
+       hr {
+         margin: 5px;
+         border: 1px solid #ccc;
+       }
+       #data-container {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         margin-top: 50px; 
+       }
+       footer {
+         height: 50px;
+         background: #000;
+         padding-top: 4px;
+       }
+       #copyright {
+         color: #fff;
+         text-align: center;
+         border: none;
+         box-shadow: none;
+       }
+       #loading-message {
+         text-align: center;
+         margin-top: 20px;
+         font-size: 18px;
+         color: #333;
+       }
+       header {
+         height: 60px;
+         width: 100%;
+         background: #522e2e;
+         padding-top: 15px;
+         position: fixed;
+         top: 0;
+         left: 0;
+         z-index: 1000;
+         box-shadow: 2px 4px 15px #b7abab;
+       }
+     </style>
+   </head>
+   <body>
+     <header>
+       <h2 style="color: rgb(78, 238, 184); text-align: center">
+         Fetching Api Data (Using Core javascript)
+       </h2>
+     </header>
+     <div id="loading-message">Loading...</div>
+     <div id="data-container"></div>
+     <footer>
+       <p id="copyright">Copyright &copy;2024 Learning.All Rights Reserved</p>
+     </footer>
+ 
+     <script>
+       const apiUrl = "https://dummyjson.com/products";
+       const loadingMessage = document.getElementById("loading-message");
+       const dataContainer = document.getElementById("data-container");
+ 
+       fetch(apiUrl)
+         .then((res) => res.json())
+         .then((data) => {
+           console.log("Data Received:", data);
+           loadingMessage.style.display = "none";
+           displayData(data.products); // Access the 'products' property
+         })
+         .catch((err) => {
+           console.log("Error:", err);
+         });
+ 
+       function displayData(products) {
+         const div = document.getElementById("data-container");
+ 
+         products.forEach((product) => {
+           const productDiv = document.createElement("div");
+ 
+           const h4 = document.createElement("h4");
+           h4.textContent = `Title - ${product.title}`;
+           productDiv.appendChild(h4);
+ 
+           const para = document.createElement("p");
+           para.textContent = `Brand - ${product.brand}`;
+           productDiv.appendChild(para);
+ 
+           const para2 = document.createElement("p");
+           para2.textContent = `Category - ${product.category}`;
+           productDiv.appendChild(para2);
+ 
+           const para3 = document.createElement("p");
+           para3.textContent = `Description - ${product.description}`;
+           productDiv.appendChild(para3);
+ 
+           const para4 = document.createElement("p");
+           para4.textContent = `Discount Percentage - ${product.discountPercentage} %`;
+           productDiv.appendChild(para4);
+ 
+           const para5 = document.createElement("p");
+           para5.textContent = `Price - ${product.price}`;
+           productDiv.appendChild(para5);
+ 
+           const para6 = document.createElement("p");
+           para6.textContent = `Rating - ${product.rating}`;
+           productDiv.appendChild(para6);
+ 
+           product.images.forEach((imageUrl, index) => {
+             const img = document.createElement("img");
+             img.src = imageUrl;
+             img.alt = `Image ${index + 1}`;
+             productDiv.appendChild(img);
+           });
+ 
+           const hr = document.createElement("hr");
+           productDiv.appendChild(hr);
+ 
+           div.appendChild(productDiv);
+         });
+       }
+     </script>
+   </body>
+ </html>
+ 
